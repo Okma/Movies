@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="sort_preference_labels">
+        <item>@string/sort_preference_highest_rated_label</item>
+        <item>@string/sort_preference_most_popular_label</item>
+        <item>@string/sort_preference_favorites_label</item>
+    </array>
+
+    <array name="sort_preference_entries">
+        <item>@string/sort_preference_highest_rated_key</item>
+        <item>@string/sort_preference_most_popular_key</item>
+        <item>@string/sort_preference_favorites_key</item>
+    </array>
+</resources>

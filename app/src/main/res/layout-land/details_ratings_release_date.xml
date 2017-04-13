@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_release_date_label"
+                style="@style/detailsHeaderTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_release_date_label" />
+
+            <TextView
+                android:id="@+id/tv_release_date"
+                style="@style/detailsItemTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="July 10, 2017" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_ratings_label"
+                style="@style/detailsHeaderTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_ratings_label"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/tv_ratings"
+                style="@style/detailsItemTheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="5.0 / 10" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

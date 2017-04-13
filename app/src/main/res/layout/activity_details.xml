@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.movifo.DetailsActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/details_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="40sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Movie Title" />
+
+                <ImageView
+                    android:id="@+id/iv_poster_details"
+                    android:layout_width="250dp"
+                    android:layout_height="340dp"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_movie_title"
+                    tools:src="@android:drawable/ic_menu_close_clear_cancel" />
+
+                <include
+                    android:id="@+id/details_trailer"
+                    layout="@layout/details_trailer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_poster_details" />
+
+                <include
+                    android:id="@+id/details_ratings_release_date"
+                    layout="@layout/details_ratings_release_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details_trailer" />
+
+                <include
+                    android:id="@+id/details_synopsis"
+                    layout="@layout/details_synopsis"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details_ratings_release_date" />
+
+                <include
+                    android:id="@+id/details_reviews"
+                    layout="@layout/details_reviews"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/details_synopsis" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>

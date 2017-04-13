@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:title="@string/sort_preference_label"
+        android:key="@string/sort_preference_key"
+        android:defaultValue="@string/sort_preference_most_popular_key"
+        android:entryValues="@array/sort_preference_entries"
+        android:entries="@array/sort_preference_labels"/>
+
+    <CheckBoxPreference
+        android:title="@string/pref_notifications_enabled_label"
+        android:key="@string/pref_notifications_enabled_key"
+        android:defaultValue="@bool/pref_notifications_default"/>
+</PreferenceScreen>

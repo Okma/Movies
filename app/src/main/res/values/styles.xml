@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+    </style>
+
+    <style name="detailsHeaderTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
+        <item name="android:fontFamily">casual</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="detailsItemTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+
+    <style name="trailerButtonThemePortrait" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:paddingLeft">@dimen/port_button_padding_left</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/button_padding_drawable</item>
+    </style>
+
+    <style name="trailerButtonThemeLandscape" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:paddingLeft">@dimen/land_button_padding_left</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">@dimen/button_padding_drawable</item>
+    </style>
+
+</resources>
