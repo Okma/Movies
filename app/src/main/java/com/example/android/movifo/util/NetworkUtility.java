@@ -130,12 +130,11 @@ public class NetworkUtility {
 
     /**
      * Build the movie query URL for making an HTTP request for movies data.
-     * @param context Context reference for accessing SharedPreferences.
+     * @param preferenceString String of preference key to append to query URL string.
      * @return The built URL for requesting movies data.
      */
-    public static URL buildMovieQueryURL(Context context) {
-        final String sortPreferenceAsString = convertSortPreferenceToQueryString(context);
-        final String assembledBaseURL = BASE_API_URL.concat(sortPreferenceAsString);
+    public static URL buildMovieQueryURL(String preferenceString) {
+        final String assembledBaseURL = BASE_API_URL.concat(preferenceString);
         return buildAuthQueryURL(assembledBaseURL);
     }
 

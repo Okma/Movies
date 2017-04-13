@@ -4,6 +4,7 @@
 
     <dimen name="poster_image_height_details">340dp</dimen>
     <dimen name="poster_image_width_details">250dp</dimen>
+    <dimen name="poster_image_details_padding">16dp</dimen>
 
     <dimen name="button_padding_drawable">5dp</dimen>
     <dimen name="port_button_padding_left">50dp</dimen>
@@ -12,7 +13,11 @@
     <dimen name="share_left_padding_offset">5dp</dimen>
 
     <dimen name="review_padding">10dp</dimen>
+    <dimen name="padding_small">12dp</dimen>
 
     <dimen name="header_text_size">26sp</dimen>
     <dimen name="normal_text_size">20sp</dimen>
+    <dimen name="large_text_size">40sp</dimen>
+
+    <dimen name="loading_bar_dimen">100dp</dimen>
 </resources>

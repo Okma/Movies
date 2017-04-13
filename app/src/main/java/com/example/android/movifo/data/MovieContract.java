@@ -52,6 +52,9 @@ public final class MovieContract {
 
         @Column(Column.Type.INTEGER)
         String COLUMN_FAVORITE = "is_favorite";
+
+        @Column(Column.Type.TEXT)
+        String COLUMN_SORT_METHOD = "sort_method";
     }
 
 }

@@ -20,7 +20,7 @@ public class MovieContentProvider extends ProviGenProvider {
     private static Class[] contracts = new Class[]{MovieContract.MovieEntry.class};
 
     private static final String DATABASE_NAME = "movies.db";
-    private int DATABASE_VERSION = 2;
+    private int DATABASE_VERSION = 3;
 
     @Override
     public SQLiteOpenHelper openHelper(Context context) {

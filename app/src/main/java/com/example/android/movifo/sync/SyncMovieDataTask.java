@@ -40,16 +40,38 @@ public class SyncMovieDataTask {
         }
 
         try {
-            // Construct the movie request URL, based on the preferences of the user.
-            URL movieRequestUrl = NetworkUtility.buildMovieQueryURL(context);
+
+            final String popularQueryString = "popular";
+            final String highestRatedQueryString = "top_rated";
+
+            // Construct the movie request URL for highest rated movies.
+            URL popularQueryUrl = NetworkUtility.buildMovieQueryURL(popularQueryString);
 
             // Add the request to the Volley queue.
             NetworkUtility.addToRequestQueue(context,
-                    new StringRequest(Request.Method.GET, movieRequestUrl.toString(),
+                    new StringRequest(Request.Method.GET, popularQueryUrl.toString(),
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
-                                    onSuccessRequestResponse(context, response);
+                                    onSuccessRequestResponse(context, response, context.getString(R.string.sort_preference_most_popular_key));
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
+                        }
+                    }));
+
+            // Construct the movie request URL for highest rated movies.
+            URL highestRatedQueryUrl = NetworkUtility.buildMovieQueryURL(highestRatedQueryString);
+
+            // Add the request to the Volley queue.
+            NetworkUtility.addToRequestQueue(context,
+                    new StringRequest(Request.Method.GET, highestRatedQueryUrl.toString(),
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    onSuccessRequestResponse(context, response, context.getString(R.string.sort_preference_highest_rated_key));
                                 }
                             }, new Response.ErrorListener() {
                         @Override
@@ -67,7 +89,7 @@ public class SyncMovieDataTask {
      * @param context Context reference.
      * @param jsonResponse The JSON response as a string.
      */
-    private static void onSuccessRequestResponse(Context context, String jsonResponse) {
+    synchronized private static void onSuccessRequestResponse(Context context, String jsonResponse, String sortMethod) {
         if(!jsonResponse.isEmpty()) {
             // Extract individual JSON object strings from results.
             String[] objectStrings = JsonUtility.expandResultsString(jsonResponse);
@@ -83,17 +105,31 @@ public class SyncMovieDataTask {
 
                     // Parse movie to content values for DB functions.
                     ContentValues contentValues = movie.generateContentValues();
+                    contentValues.put(MovieContract.MovieEntry.COLUMN_SORT_METHOD, sortMethod);
 
-                    int rowsUpdated = contentResolver.update(MovieContract.MovieEntry.CONTENT_URI,
-                            contentValues,
-                            MovieContract.MovieEntry.COLUMN_ID + "=" + String.valueOf(movie.id),
+                    Cursor checkCursor = contentResolver.query(MovieContract.MovieEntry.CONTENT_URI,
+                            new String[]{MovieContract.MovieEntry.COLUMN_ID},
+                            MovieContract.MovieEntry.COLUMN_ID + " = " + movie.id,
+                            null,
                             null);
 
-                    // If updating failed, try inserting instead.
-                    if(rowsUpdated <= 0) {
+                    // Check if movie already exists in database.
+                    if(checkCursor.getCount() > 0) {
+                        // Make sure to persist favorites value.
+                        contentValues.put(MovieContract.MovieEntry.COLUMN_FAVORITE,
+                                checkCursor.getString(checkCursor.getColumnIndex(MovieContract.MovieEntry.COLUMN_FAVORITE)));
+
+                        contentResolver.update(MovieContract.MovieEntry.CONTENT_URI,
+                                contentValues,
+                                MovieContract.MovieEntry.COLUMN_ID + " = " + String.valueOf(movie.id),
+                                null);
+                    }
+                    // If the entry doesn't exist, try inserting instead.
+                    else {
                         // Parse movie to a ContentValues and insert into database.
                         contentResolver.insert(MovieContract.MovieEntry.CONTENT_URI, contentValues);
                     }
+                    checkCursor.close();
                 }
             }
         }

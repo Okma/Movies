@@ -51,6 +51,8 @@ public class Movie {
     // Movie is not "favorited" by default.
     public boolean isFavorite = false;
 
+    public String sortMethod;
+
     /**
      * Uses GSON to parse a given JSON string to a movie.
      * @param jsonString The JSON string representation of the given movie.
@@ -84,6 +86,7 @@ public class Movie {
         contentValues.put(MovieContract.MovieEntry.COLUMN_POSTER_PATH, this.posterPath);
         contentValues.put(MovieContract.MovieEntry.COLUMN_ADULT, this.isAdult);
         contentValues.put(MovieContract.MovieEntry.COLUMN_FAVORITE, this.isFavorite);
+        contentValues.put(MovieContract.MovieEntry.COLUMN_SORT_METHOD, this.sortMethod);
         return contentValues;
     }
 
@@ -102,6 +105,7 @@ public class Movie {
         movie.posterPath = cursor.getString(cursor.getColumnIndex(MovieContract.MovieEntry.COLUMN_POSTER_PATH));
         movie.isAdult = cursor.getInt(cursor.getColumnIndex(MovieContract.MovieEntry.COLUMN_ADULT)) > 0;
         movie.isFavorite = cursor.getInt(cursor.getColumnIndex(MovieContract.MovieEntry.COLUMN_FAVORITE)) > 0;
+        movie.sortMethod = cursor.getString(cursor.getColumnIndex(MovieContract.MovieEntry.COLUMN_SORT_METHOD));
         return movie;
     }
 }

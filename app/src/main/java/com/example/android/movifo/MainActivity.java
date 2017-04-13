@@ -116,25 +116,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 // Establish sorting parameter based on sorting preference.
                 String sortPreference = sharedPreferences.getString(getString(R.string.sort_preference_key), getString(R.string.sort_preference_most_popular_key));
 
-                // Optionally assigned sortOrder and/or selection, depending on preferences.
-                String sortBy = null;
-                String selection = null;
+                // Assign selection depending on preferences.
+                StringBuilder selection = new StringBuilder();
 
                 if(sortPreference.equals(getString(R.string.sort_preference_most_popular_key))) {
-                    sortBy = MovieContract.MovieEntry.COLUMN_POPULARITY;
+                    selection.append(MovieContract.MovieEntry.COLUMN_SORT_METHOD)
+                            .append(" = \'")
+                            .append(getString(R.string.sort_preference_most_popular_key))
+                            .append("\'");
                 } else if (sortPreference.equals(getString(R.string.sort_preference_highest_rated_key))){
-                    sortBy = MovieContract.MovieEntry.COLUMN_RATINGS;
+                    selection.append(MovieContract.MovieEntry.COLUMN_SORT_METHOD)
+                            .append(" = \'")
+                            .append(getString(R.string.sort_preference_highest_rated_key))
+                            .append("\'");
                 } else {
                     // Show only movies where isFavorite is true.
-                    selection = MovieContract.MovieEntry.COLUMN_FAVORITE + " = 1";
+                    selection.append(MovieContract.MovieEntry.COLUMN_FAVORITE)
+                            .append(" = 1");
                 }
 
                 return new CursorLoader(this,
                         MovieContract.MovieEntry.CONTENT_URI,
                         null,
-                        selection,
+                        selection.toString(),
                         null,
-                        sortBy);
+                        null);
             default:
                 throw new RuntimeException("Loader with id " + String.valueOf(id) + " is not implemented!");
         }

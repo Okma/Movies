@@ -12,8 +12,8 @@
 
         <ProgressBar
             android:id="@+id/pb_loading"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/loading_bar_dimen"
+            android:layout_height="@dimen/loading_bar_dimen"
             android:visibility="visible"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -39,11 +39,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12dp"
+                    android:paddingLeft="@dimen/padding_small"
+                    android:paddingRight="@dimen/padding_small"
                     android:textAlignment="center"
                     android:textColor="@android:color/white"
-                    android:textSize="40sp"
+                    android:textSize="@dimen/large_text_size"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -51,9 +51,9 @@
 
                 <ImageView
                     android:id="@+id/iv_poster_details"
-                    android:layout_width="250dp"
-                    android:layout_height="340dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="@dimen/poster_image_width_details"
+                    android:layout_height="@dimen/poster_image_height_details"
+                    android:layout_marginTop="@dimen/poster_image_details_padding"
                     android:scaleType="fitXY"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
