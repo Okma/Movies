@@ -15,7 +15,7 @@ import com.tjeannin.provigen.annotation.Id;
 public final class MovieContract {
 
     private static final String URI_SPECIFIER = "content://";
-    private static final String CONTENT_AUTHORITY = "com.example.android.movifo";
+    public static final String CONTENT_AUTHORITY = "com.example.android.movifo";
 
     private static final Uri BASE_CONTENT_URI = Uri.parse(URI_SPECIFIER + CONTENT_AUTHORITY);
 
